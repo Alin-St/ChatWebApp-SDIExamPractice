@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup Dialog</title>
+  <style>
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9998;
+    }
+  </style>
+</head>
+<body>
+<button onclick="showPopup()">Open Dialog</button>
+
+<div id="popup" class="popup" style="display: none;">
+  <label for="text-input">Enter text:</label>
+  <input type="text" id="text-input">
+  <br><br>
+  <button onclick="save()">Save</button>
+  <button onclick="cancel()">Cancel</button>
+</div>
+
+<div id="overlay" class="overlay" style="display: none;"></div>
+
+<script>
+  function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+
+  function hidePopup() {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  function save() {
+    var text = document.getElementById('text-input').value;
+    console.log('Text entered:', text);
+    hidePopup();
+  }
+
+  function cancel() {
+    hidePopup();
+  }
+</script>
+</body>
+</html>
