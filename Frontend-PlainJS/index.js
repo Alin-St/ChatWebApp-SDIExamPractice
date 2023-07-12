@@ -4,11 +4,31 @@ function createChannel() {
 }
 
 function createChannel_save() {
-    document.getElementById("createChannelPopup").style.display = "none";
-    document.getElementById("createChannelOverlay").style.display = "none";
+    // Send a post request to the backend to create a new channel
+    const guid = uuidv4();
+    const channelName = document.getElementById("channelNameInput").value;
+
+    const formData = new FormData();
+    formData.append('guid', guid);
+    formData.append('channelName', channelName);
+
+    fetch('../Backend-PHP/addChannel.php', {method: 'POST', body: formData})
+        .then(resp => resp.text())
+        .then(text => {
+            if (text === "OK")
+                window.location.href = "channel.html?guid=" + guid;
+            else
+                alert("Error: " + text);
+        });
 }
 
 function createChannel_cancel() {
     document.getElementById("createChannelPopup").style.display = "none";
     document.getElementById("createChannelOverlay").style.display = "none";
+}
+
+function uuidv4() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
 }
