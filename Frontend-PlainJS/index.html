@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat Web Application</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="globals.css">
     <script src="index.js"></script>
 </head>
 <body>
@@ -26,13 +26,13 @@
     </tr>
 </table>
 <br/>
-<button onclick="createChannel()">Create channel</button>
+<button onclick="showCreateChannelDialog()">Create channel</button>
 <div id="createChannelOverlay" class="overlay" style="display: none"></div>
 <div id="createChannelPopup" class="popup" style="display: none;">
     <label> Enter channel name: <input type="text" id="channelNameInput" placeholder="Channel name"></label>
     <br/><br/>
     <button onclick="createChannel_save()">Save</button>
-    <button onclick="createChannel_cancel()">Cancel</button>
+    <button onclick="hideCreateChannelDialog()">Cancel</button>
 </div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 drop table Channels;
 
 create table Channels (
-                          guid char(36) primary key,
-                          name varchar(255) not null unique
+    guid char(36) primary key check (guid regexp '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'),
+    name varchar(255) not null unique check (name <> '')
 );
 
 INSERT INTO Channels (guid, name) VALUES ('b59ce9ea-5e5d-4b2b-9a6b-aae3c111e7bc', 'Channel 1');

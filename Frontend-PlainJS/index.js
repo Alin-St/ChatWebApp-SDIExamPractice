@@ -1,4 +1,4 @@
-function createChannel() {
+function showCreateChannelDialog() {
     document.getElementById("createChannelPopup").style.display = "block";
     document.getElementById("createChannelOverlay").style.display = "block";
 }
@@ -16,13 +16,14 @@ function createChannel_save() {
         .then(resp => resp.text())
         .then(text => {
             if (text === "OK")
-                window.location.href = "channel.html?guid=" + guid;
+                window.location.href = "channels.html?guid=" + guid;
             else
-                alert("Error: " + text);
+                alert("Cannot add channel:\n" + text);
         });
 }
 
-function createChannel_cancel() {
+function hideCreateChannelDialog() {
+    //document.getElementById("channelNameInput").value = "";
     document.getElementById("createChannelPopup").style.display = "none";
     document.getElementById("createChannelOverlay").style.display = "none";
 }

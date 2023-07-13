@@ -1,8 +1,8 @@
 <?php
 require_once 'db_connect.php';
 
-$guid = $_POST['guid'];
-$channelName = $_POST['channelName'];
+$guid = $_POST['guid'] ?? die("Error: GUID not specified.");
+$channelName = $_POST['channelName'] ?? die("Error: Channel name not specified.");
 
 global $connection;
 
@@ -14,3 +14,6 @@ if (!mysqli_stmt_execute($stmt)) {
 else {
     echo "OK";
 }
+
+mysqli_stmt_close($stmt);
+mysqli_close($connection);
