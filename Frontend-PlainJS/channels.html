@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Messenger Chat Page</title>
+    <link rel="stylesheet" href="globals.css">
+    <script src="channels.js"></script>
 </head>
 <body>
-<p>Welcome to the MCP!</p>
+<p id="channelNotFoundMessage" style="display: none">Error: Channel does not exist. GUID not found.</p>
+<div id="setNicknameOverlay" class="overlay" style="display: none"></div>
+<div id="setNicknameDialog" class="popup" style="display: none">
+    <label>Enter your nickname: <input type="text" id="nicknameInput" placeholder="Nickname"></label>
+    <br/><br/>
+    <button onclick="setNickname_save()">Save</button>
+    <button onclick="setNickname_cancel()">Cancel</button>
+</div>
+<p id="failedNicknameMessage" style="display: none">Failed to set nickname. You may go back to the previous page.</p>
+<h2 id="successMessage" style="display: none">Chatting in {channel} as {nickname}.</h2>
 </body>
 </html>
